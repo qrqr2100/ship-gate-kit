@@ -22,7 +22,7 @@ Before shipping, judge whether the imports/dependencies the AI added include a
 > Why it matters: an attacker pre-registers a non-existent name and plants a malicious package. The install itself is the breach.
 
 ## How to hand it to Claude Code
-> "Apply the DEPENDENCY gate to this diff. Extract every added package name,
+> "Apply the DEPENDENCY gate to this code (a diff, file, or snippet). Extract every added package name,
 > and check each for existence on npm/PyPI/pkg.go.dev/crates.io (look it up directly if you can, otherwise give me a command to check).
 > Verdict FAIL if it doesn't exist, WARN if it exists but is new/low-download."
 

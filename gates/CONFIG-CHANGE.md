@@ -54,7 +54,7 @@ Verdict:
 - `replicas: 20` → CONFIG-CHANGE WARN (cost trigger: confirm whether this scale-up is intended)
 
 ## How to hand it to Claude Code
-> "Apply the CONFIG-CHANGE gate to this config diff. List risky changes from the angle of
+> "Apply the CONFIG-CHANGE gate to this config (a diff or the config file). List risky changes from the angle of
 > permissions, secrets, cost, safety guards, and version pinning, and verdict FAIL/WARN/PASS."
 
 ## [Unverified]

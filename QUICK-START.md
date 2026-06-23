@@ -60,6 +60,7 @@ If cross-check is on, the judge columns/names in the report are filled from `cro
 
 ## Where people get stuck
 
+- No git, or live/running code? Paste the file or code snippet directly — SECRET-SCAN, DEPENDENCY, CODE-DIFF, and CONFIG-CHANGE work on it as-is. (Only SCOPE and PR-DESCRIPTION need a change-set or a PR.)
 - If Claude Code can't get the diff: copy the output of `git diff HEAD~1` and paste it.
 - If the DEPENDENCY gate hits "no internet access": run the command Claude Code suggests (`npm info <name>`, etc.) in your terminal yourself.
 - If a verdict isn't what you expected: check that you specified the GATE-REPORT-TEMPLATE format.

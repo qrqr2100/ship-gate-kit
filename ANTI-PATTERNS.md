@@ -64,7 +64,7 @@ Patterns where the gate becomes meaningless, the team starts ignoring it, or it 
 **What it does**: decides this kit is enough, without gitleaks/Socket/Snyk.
 
 **Why it's bad**:
-- This kit doesn't scan full Git history. It only sees the pre-commit diff.
+- This kit doesn't scan full Git history. It only sees the current change you hand it (a diff, file, or snippet) — already-committed/pushed secrets are out of reach.
 - Secrets already committed/pushed are not caught by this kit.
 - Dependency graphs, CVEs, and licenses are out of this kit's scope.
 

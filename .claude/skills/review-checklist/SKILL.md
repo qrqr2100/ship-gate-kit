@@ -11,11 +11,12 @@ It does not invent findings (false-positive suppression). It reports only what i
 ## Workflow (5 steps)
 
 ### 1. Input & gate selection
-Identify the artifact type the user gave and pick the gates to apply:
-- code diff → SECRET-SCAN · SCOPE · DEPENDENCY · CODE-DIFF
+Identify what the user gave and pick the gates. **Input is usually a git diff, but it doesn't have to be — a changed file, a pasted code snippet, or live code (running code / hotfix) is also a valid target.**
+- code diff / file / snippet → SECRET-SCAN · DEPENDENCY · CODE-DIFF (SCOPE too if it's a git diff)
 - PR → the above + PR-DESCRIPTION
-- config change → CONFIG-CHANGE · SECRET-SCAN
+- config change / config file → CONFIG-CHANGE · SECRET-SCAN
 - doc → DOCUMENT-GATE-TEMPLATE
+- **no git / live system** → apply SECRET-SCAN · DEPENDENCY · CODE-DIFF · CONFIG-CHANGE *directly to the code/file*. SCOPE needs the user to declare "the files I changed", and PR-DESCRIPTION only applies when there's a PR.
 If ambiguous, ask the user which gates to apply.
 
 ### 2. Per-gate check

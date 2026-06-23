@@ -94,7 +94,7 @@ Check point: use of `env!()` + can a real key end up in the build environment fo
 - **PASS** — no signs of secret exposure.
 
 ## How to hand it to Claude Code
-> "Apply the SECRET-SCAN gate to this diff. Using the common checklist and language-specific patterns (Python fallback, JS short-circuit, Go const block, Rust env! macro), list exposure candidates with line and file, judge each as a real secret vs a dummy, and verdict FAIL/WARN/PASS. Don't fix the code."
+> "Apply the SECRET-SCAN gate to this code (a diff, file, or snippet). Using the common checklist and language-specific patterns (Python fallback, JS short-circuit, Go const block, Rust env! macro), list exposure candidates with line and file, judge each as a real secret vs a dummy, and verdict FAIL/WARN/PASS. Don't fix the code."
 
 ## When to move to a dedicated tool
 This gate is a first pass. For full-history scanning and automation:

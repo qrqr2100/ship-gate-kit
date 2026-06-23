@@ -97,7 +97,7 @@ Check point: is `.unwrap()` / `.expect()` outside `#[cfg(test)]`? If so, at leas
 - **PASS** — none of the above.
 
 ## How to hand it to Claude Code
-> "Apply the CODE-DIFF gate to this diff. List common risky patterns and language-specific patterns (Python empty except, JS ignored Promise, Go _ err discard, Rust unwrap in production) with lines, classify by severity (FAIL/WARN), and give an overall verdict only. Don't fix the code."
+> "Apply the CODE-DIFF gate to this code (a diff, file, or snippet). List common risky patterns and language-specific patterns (Python empty except, JS ignored Promise, Go _ err discard, Rust unwrap in production) with lines, classify by severity (FAIL/WARN), and give an overall verdict only. Don't fix the code."
 
 ## [Unverified]
 - Real-project hit rate of the language-specific patterns is unmeasured.
