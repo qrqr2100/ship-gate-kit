@@ -1,0 +1,36 @@
+# Ship Gate Kit cross-check — judge registry (copy-paste starter)
+# Usage: copy this to judges.yaml and turn on only the judges you have (minimum 2).
+# Rule: 2+ connected judges => cross-check is active. Only 1 connected => same as a single judgment (quorum k<2).
+# status: connected | unlinked (shown as [unlinked] demo, excluded from voting)
+judges:
+  - id: claude                 # judge identifier (column title in the report)
+    label: "Claude"
+    engine: claude-code        # which engine/tool runs it
+    kind: llm                  # llm | rule (non-LLM deterministic)
+    invoke: "Paste the judge prompt (CROSS-CHECK.md 5-A) into a fresh Claude Code session (no other judge's result given)"
+    status: connected
+    authoritative_on: []       # gates where this judge is the 'anchor' (usually empty for LLMs)
+
+  - id: codex
+    label: "Codex"
+    engine: openai-codex-cli
+    kind: llm
+    invoke: "codex exec '<5-A prompt>'  # after install/auth"
+    status: unlinked           # <- [unlinked]: column is demo, excluded from voting, no effect claim
+    authoritative_on: []
+
+  - id: gemini                 # example — it doesn't have to be Claude+Codex
+    label: "Gemini"
+    engine: gemini-cli
+    kind: llm
+    invoke: "gemini -p '<5-A prompt>'"
+    status: unlinked
+    authoritative_on: []
+
+  - id: linter                 # non-LLM deterministic judge (regex + registry lookup)
+    label: "Deterministic Linter"
+    engine: deterministic
+    kind: rule
+    invoke: "scripts/lint-gate.sh <diff>   # regex + registry lookup, no LLM"
+    status: connected
+    authoritative_on: [SECRET-SCAN, DEPENDENCY]  # objective gates anchored by the linter — only after false-positive measurement

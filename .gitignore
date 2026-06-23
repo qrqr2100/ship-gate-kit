@@ -1,0 +1,7 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# User-generated outputs (the kit ships only the *.example and templates)
+gate-report.html
+cross-check/judges.yaml
