@@ -108,7 +108,7 @@ ship-gate-kit/
 > Flow: **gate (judge) → commit (after pass) → ship.** The gate stands in front of the commit.
 > Don't use it for CI automation (see ANTI-PATTERNS.md).
 
-> **You don't need git.** If there's no diff, hand over a changed file, a code snippet, or live code (running code / hotfix) as-is — SECRET-SCAN, DEPENDENCY, CODE-DIFF, and CONFIG-CHANGE apply directly to the code/file. (Only SCOPE — declare "the files I changed" — and PR-DESCRIPTION need a change-set or a PR.)
+> **Input can be anything — a code diff, a file, a snippet, or live code (running code / hotfix).** Hand the code over as-is and SECRET-SCAN, DEPENDENCY, CODE-DIFF, and CONFIG-CHANGE apply directly to the code/file. (Only SCOPE — declare "the files I changed" — and PR-DESCRIPTION need a change-set or a PR.)
 
 ---
 
