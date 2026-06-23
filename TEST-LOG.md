@@ -77,3 +77,18 @@
   - `.env.example` placeholders (`your-key-here`·`xxxxxxxx`) → **PASS = no false positive**.
 - Interpretation: the deterministic linter's SECRET-SCAN works under these conditions and did not flag obvious placeholders.
   The possibility of missing obfuscated/encoded keys remains [unverified] (an inherent limit of regex-based scanning).
+
+---
+
+## T8. Live-system field test (2026-06-23, measured)
+
+- Target: a real running live system (no git · external domain · code specifics withheld).
+- Method: **generalized-input mode** — gates applied directly to code/files, no git diff.
+- Result: **5/6 gates worked** (only PR-DESCRIPTION N/A = no PR)
+  - **SECRET-SCAN PASS** — 0 hardcoded keys, env-var loading judged correct. The single match (a test dummy) was *correctly identified as a dummy* → **0 false positives**.
+  - **DEPENDENCY PASS** — imported packages match the dependency manifest; 0 hallucinated/slopsquatted.
+  - **CODE-DIFF WARN** — 0 critical FAIL. Intentional fallbacks (many `except: pass`) classified as minor WARN, not FAIL → **over-blocking suppressed**.
+  - **CONFIG-CHANGE PASS** — safe defaults, timeouts, https, externalized keys confirmed. Minor: no version upper bounds (reproducibility).
+  - **SCOPE PASS** — **git-free mode worked**: instead of auto diff comparison, verified intent scope from a "declared changed-files" list.
+- Interpretation: **generalized input (diff→code/file/live) is confirmed effective on a real live system.** Notably SCOPE's git-free application, SECRET's correct dummy discrimination (0 FP), and CODE-DIFF's over-blocking suppression.
+- Limit: **a single system, one run** — hit rate still can't be generalized. It's the fact "it worked", not evidence of "catches X%".
